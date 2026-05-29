@@ -1,12 +1,32 @@
 <script setup lang="ts">
 import { useReveal } from '../composables/useReveal'
+import JuVenise from '../assets/images/ju-venise.jpg'
+import OscarRibs from '../assets/images/oscar-ribs.jpeg'
+import OscarGrimace from '../assets/images/oscar-grimace.jpg'
+import OscarMaman from '../assets/images/oscar-maman.jpg'
+import Nous from '../assets/images/nous.jpg'
 
 // Customize captions here
-const captions = [
-  'Notre premier sourire',
-  'Un matin ensemble',
-  'Câlin du soir',
-  'Mon plus beau souvenir',
+
+const images = [
+  {
+    img: Nous,
+    caption: 'Mon premier anniversaire'
+  },
+  {
+    img: JuVenise,
+    caption: 'Quand tu me portes pour jouer'
+  },
+  
+  {
+    img: OscarGrimace,
+    caption: 'Quand je fais le foufou'
+  },
+  {
+    img: OscarMaman,
+    caption: 'Les meilleurs calîns'
+  },
+  
 ]
 
 const { el, visible } = useReveal()
@@ -26,19 +46,12 @@ const { el, visible } = useReveal()
         <img src="./assets/photo1.jpg" alt="caption" />
         Placez vos fichiers dans src/assets/
       -->
-      <article v-for="(caption, i) in captions" :key="i" :class="`item-${i + 1}`">
+      <article v-for="(image, i) in images" :key="i" :class="`item-${i + 1}`">
         <div class="photo-frame">
           <!-- Remplacer par <img src="..." :alt="caption" /> -->
-          <div class="placeholder">
-            <svg viewBox="0 0 56 56" aria-hidden="true">
-              <circle cx="28" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="0.8"/>
-              <path d="M8,50 Q8,34 18,34 L24,38 L28,36 L32,38 L38,34 Q48,34 48,50"
-                    fill="none" stroke="currentColor" stroke-width="0.8"/>
-            </svg>
-            <span>photo {{ i + 1 }}</span>
-          </div>
+          <img :src="image.img">
         </div>
-        <p class="caption">{{ caption }}</p>
+        <p class="caption">{{ image.caption }}</p>
       </article>
     </div>
   </section>
@@ -112,6 +125,12 @@ h2 {
   object-fit: cover;
   display: block;
   transition: transform 0.7s ease;
+}
+
+@media (min-width: 701px) {
+  .item-1 .photo-frame img {
+    object-position: center 40%;
+  }
 }
 
 .photo-frame:hover img { transform: scale(1.04); }
