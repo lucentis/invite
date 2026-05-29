@@ -4,6 +4,8 @@ import { useReveal } from '../composables/useReveal'
 defineProps<{ childName: string; motherName: string }>()
 
 const { el, visible } = useReveal()
+console.log(el);
+
 </script>
 
 <template>

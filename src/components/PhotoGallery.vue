@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useReveal } from '../composables/useReveal'
 import JuVenise from '../assets/images/ju-venise.jpg'
-import OscarRibs from '../assets/images/oscar-ribs.jpeg'
 import OscarGrimace from '../assets/images/oscar-grimace.jpg'
 import OscarMaman from '../assets/images/oscar-maman.jpg'
 import Nous from '../assets/images/nous.jpg'
@@ -30,6 +29,8 @@ const images = [
 ]
 
 const { el, visible } = useReveal()
+console.log(el);
+
 </script>
 
 <template>
@@ -130,6 +131,12 @@ h2 {
 @media (min-width: 701px) {
   .item-1 .photo-frame img {
     object-position: center 40%;
+  }
+}
+
+@media (max-width: 701px) {
+  .item-2 .photo-frame img {
+    object-position: center 30%;
   }
 }
 
